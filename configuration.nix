@@ -113,7 +113,7 @@
     wget
 
 
-    inputs.nixvim.packages."${pkgs.system}".default
+    inputs.helix.packages."${pkgs.system}".helix
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
