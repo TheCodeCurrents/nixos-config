@@ -25,6 +25,14 @@
         # so the old configuration file still takes effect
         ./configuration.nix
 
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+
+          home-manager.users.jflocke = import ./home.nix;
+        }
+
         { _module.args = { inherit inputs; };}
       ];
     };
