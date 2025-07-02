@@ -11,7 +11,7 @@
       # If you are not running an unstable channel of nixpkgs, select the corresponding branch of nixvim.
       # url = "github:nix-community/nixvim/nixos-25.05";
 
-      inputs.nixpkgs.follows = "nixpkgs";
+      helix.url = "github:helix-editor/helix/master";
     };
   };
 
@@ -23,7 +23,7 @@
         # Import the previous configuration.nix we used,
         # so the old configuration file still takes effect
         ./configuration.nix
-        
+
         { _module.args = { inherit inputs; };}
       ];
     };
