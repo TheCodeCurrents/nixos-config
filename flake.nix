@@ -5,14 +5,8 @@
     # NixOS official package source, using the nixos-25.05 branch here
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
 
-    # nixvim flake
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      # If you are not running an unstable channel of nixpkgs, select the corresponding branch of nixvim.
-      # url = "github:nix-community/nixvim/nixos-25.05";
-
-      helix.url = "github:helix-editor/helix/master";
-    };
+    # helix flake
+    helix.url = "github:helix-editor/helix/master";
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
