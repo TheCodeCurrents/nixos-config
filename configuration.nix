@@ -14,7 +14,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "thinkpad";
+  networking.hostName = "ideapad";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -92,16 +92,6 @@
 
   # Install firefox.
   programs.firefox.enable = true;
-
-  # git configuration
-  programs.git = {
-    enable = true;
-    config = {
-      user.name  = "Jakob Flocke";
-      user.email = "jflocke@proton.me";
-      credential.helper = "cache";
-    };
-  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
