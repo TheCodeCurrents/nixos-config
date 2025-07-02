@@ -85,6 +85,9 @@
     isNormalUser = true;
     description = "Jakob Flocke";
     extraGroups = [ "networkmanager" "wheel" ];
+    packages = with pkgs; [
+    #  thunderbird
+    ];
   };
 
   # Install firefox.
@@ -93,15 +96,11 @@
   programs.git = {
     enable = true;
     config = {
-      user.name = "Jakob Flocke";
+      user.name  = "Jakob Flocke";
       user.email = "jflocke@proton.me";
-      credential.helper = "cache"; # or "manager" if installed
+      credential.helper = "cache";
     };
   };
-
-
- nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -139,5 +138,7 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
+
+  nix.settings.experimental-features = [ "flakes" "nix-command" ];
 
 }
