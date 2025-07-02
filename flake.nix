@@ -1,9 +1,9 @@
 {
-  description = "System Configuration";
+  description = "NixOS Configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    # home-manager, used for managing user configuration
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       # The `follows` keyword in inputs is used for inheritance.
@@ -12,30 +12,26 @@
       # to avoid problems caused by different versions of nixpkgs.
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    helix.url = "github:helix-editor/helix/master";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
-    # Please replace my-nixos with your hostname
-    nixosConfigurations.ideapad = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        # Import the previous configuration.nix we used,
-        # so the old configuration file still takes effect
-        ./configuration.nix
+  outputs = inputs@{ nixpkgs, home-manager, ... }: {
+    nixosConfigurations = {
+      my-nixos = nixpkgs.lib.ideapad {
+        system = "x86_64-linux";
+        modules = [
+          ./configuration.nix
 
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
+          # make home-manager as a module of nixos
+          # so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
 
-          home-manager.users.jflocke = import ./home.nix;
-        }
-
-        { _module.args = { inherit inputs; };}
-      ];
+            home-manager.users.jflocke = import ./home.nix;
+          }
+        ];
+      };
     };
   };
-
 }
