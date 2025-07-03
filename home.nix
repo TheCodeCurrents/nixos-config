@@ -25,7 +25,16 @@
     # here is some command line tools I use frequently
     # feel free to add your own or remove some of them
 
+    # utility
     neofetch
+
+    # productivity
+    zoxide
+    eza
+    rg
+    fzf
+    bat
+
   ];
 
   # basic configuration of git, please change to your own
@@ -65,16 +74,17 @@
   programs.bash = {
     enable = true;
     enableCompletion = true;
-    # TODO add your custom bashrc here
     bashrcExtra = ''
       export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
     '';
 
     # set some aliases, feel free to add more or remove some
     shellAliases = {
-      k = "kubectl";
-      urldecode = "python3 -c 'import sys, urllib.parse as ul; print(ul.unquote_plus(sys.stdin.read()))'";
-      urlencode = "python3 -c 'import sys, urllib.parse as ul; print(ul.quote_plus(sys.stdin.read()))'";
+      gcm = "gmit commit -m";
+      gst = "git status -sb'";
+      gsw = "git switch";
+      cd = "z";
+      ls = "eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions";
     };
   };
 
