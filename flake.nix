@@ -23,14 +23,14 @@
       modules = [
         # Import the previous configuration.nix we used,
         # so the old configuration file still takes effect
-        ./configuration.nix
+        ./modules/common.nix
 
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
 
-          home-manager.users.jflocke = import ./home.nix;
+          home-manager.users.jflocke = import ./users/jflocke/home.nix;
         }
 
         { _module.args = { inherit inputs; };}
