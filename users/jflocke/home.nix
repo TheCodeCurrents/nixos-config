@@ -1,6 +1,11 @@
 { config, pkgs, ... }:
 
 {
+
+  imports = [
+    gnome.nix
+  ]
+
   home.username = "jflocke";
   home.homeDirectory = "/home/jflocke";
 
