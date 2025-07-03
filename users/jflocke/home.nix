@@ -13,9 +13,7 @@
     neofetch
 
     # productivity
-    zoxide
     eza
-    rg
     fzf
     bat
 
@@ -26,6 +24,15 @@
     enable = true;
     userName = "Jakob Flocke";
     userEmail = "jflocke@proton.me";
+  };
+
+  # enable zoxide
+  programs.zoxide = {
+    enable = true;
+    enableBashIntegration = true;
+    options = [
+      "--cmd cd"
+    ];
   };
 
   # starship - an customizable prompt for any shell
@@ -60,6 +67,7 @@
     enableCompletion = true;
     bashrcExtra = ''
       export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
+      eval "$(zoxide init bash)"
     '';
 
     # set some aliases, feel free to add more or remove some
@@ -67,10 +75,46 @@
       gcm = "gmit commit -m";
       gst = "git status -sb'";
       gsw = "git switch";
-      cd = "z";
       ls = "eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions";
     };
   };
+
+
+  # gnome customisation
+  gtk = {
+    enable = true;
+
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
+
+    theme = {
+      name = "palenight";
+      package = pkgs.palenight-theme;
+    };
+
+    cursorTheme = {
+      name = "Numix-Cursor";
+      package = pkgs.numix-cursor-theme;
+    };
+
+    gtk3.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+      '';
+    };
+
+    gtk4.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+      '';
+    };
+  };
+
+  home.sessionVariables.GTK_THEME = "palenight";
+
+
 
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
