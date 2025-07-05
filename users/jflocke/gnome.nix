@@ -1,4 +1,4 @@
-# modules/gnome.nix
+# gnome.nix
 { config, pkgs, lib, ... }:
 
 let
