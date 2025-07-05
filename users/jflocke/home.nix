@@ -15,14 +15,14 @@
     # utility
     neofetch
 
-    # productivity
+    # terminal
     eza
     fzf
     bat
+    grc
 
   ];
 
-  # basic configuration of git, please change to your own
   programs.git = {
     enable = true;
     userName = "Jakob Flocke";
@@ -34,7 +34,7 @@
     enable = true;
     profiles.default = {
       userSettings = {
-        "workbench.colorTheme" = "Catppuccin Mocha";
+        "workbench.colorTheme" = "Tokyo Night";
         "workbench.iconTheme" = "Catppuccin Macchiato";
         "editor.fontSize" = 15;
       };
@@ -65,6 +65,7 @@
         zhuangtongfa.material-theme
         catppuccin.catppuccin-vsc
         # whizkydee.material-palenight-theme
+        enkia.tokyo-night
         
         # icons
         catppuccin.catppuccin-vsc-icons
@@ -75,7 +76,6 @@
       ];
     };
   };
-
   
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
