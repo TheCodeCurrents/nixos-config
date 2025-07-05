@@ -1,7 +1,7 @@
 # terminal.nix
 { config, pkgs, lib, ... }:
 
-# enable zoxide
+{# enable zoxide
   programs.zoxide = {
     enable = true;
     enableBashIntegration = true;
@@ -53,3 +53,4 @@
       ls = "eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions";
     };
   };
+}
