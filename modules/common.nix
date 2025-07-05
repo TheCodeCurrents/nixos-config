@@ -85,9 +85,6 @@
     isNormalUser = true;
     description = "Jakob Flocke";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    #  thunderbird
-    ];
   };
 
   # Install firefox.
@@ -104,6 +101,7 @@
 
 
     inputs.helix.packages."${pkgs.system}".helix
+    vscode
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
