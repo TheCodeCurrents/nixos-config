@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
 
@@ -11,9 +11,6 @@
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
-    # here is some command line tools I use frequently
-    # feel free to add your own or remove some of them
-
     # utility
     neofetch
 
@@ -81,6 +78,53 @@
       gst = "git status -sb'";
       gsw = "git switch";
       ls = "eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions";
+    };
+  };
+
+  # vscode
+  programs.vscode = {
+    enable = true;
+    profiles.default = {
+      userSettings = {
+        "workbench.colorTheme" = "Catppuccin Mocha";
+        "workbench.iconTheme" = "Catppuccin Macchiato";
+        "editor.fontSize" = 15;
+      };
+      
+      extensions = with pkgs.vscode-extensions; [
+
+        visualstudioexptteam.vscodeintellicode
+
+        # python
+        ms-python.python
+        njpwerner.autodocstring
+
+        # rust
+        rust-lang.rust-analyzer
+        # dustypomerleau.rust-syntax
+        fill-labs.dependi
+
+        # nix
+        jnoortheen.nix-ide
+
+        # java
+        vscjava.vscode-java-pack
+
+        # C/C++
+        ms-vscode.cpptools-extension-pack
+
+        # themes
+        zhuangtongfa.material-theme
+        catppuccin.catppuccin-vsc
+        # whizkydee.material-palenight-theme
+        
+        # icons
+        catppuccin.catppuccin-vsc-icons
+
+        # microschrott
+        github.copilot-chat
+        github.copilot
+      ];
     };
   };
 

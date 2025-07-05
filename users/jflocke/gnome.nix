@@ -11,11 +11,6 @@ in {
   gtk = {
     enable = true;
 
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = papirus;
-    };
-
     theme = {
       name = "palenight";
       package = palenight;

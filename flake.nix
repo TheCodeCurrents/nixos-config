@@ -13,10 +13,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    helix.url = "github:helix-editor/helix/master";
+    # vscode extensions
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, nix-vscode-extensions, ... }@inputs: {
+    # Overlays
+    nixpkgs.overlays = [
+      nix-vscode-extensions.overlays.default
+    ];
+
     # Please replace my-nixos with your hostname
     nixosConfigurations.ideapad = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
