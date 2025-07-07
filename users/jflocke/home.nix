@@ -16,11 +16,45 @@
     neofetch
 
     # terminal
+    ptyxis
     eza
     fzf
     bat
     grc
 
+    # rust
+    cargo
+    rustc
+
+    # cad
+    freecad
+    librecad
+    kicad
+
+    # apps
+    pipeline
+    boxbuddy
+    obsidian
+    logseq
+    notion-app
+    appflowy
+    obs-studio
+    davinci-resolve
+    signal-desktop
+    discord
+    threema-desktop
+    spotifyd
+    piper
+    libreoffice-qt6-fresh
+    onlyoffice-desktopeditors
+    rambox
+    bottles
+    mpv
+    openrgb-with-all-plugins
+    blender
+    inkscape
+    libresprite
+    impression
   ];
 
   programs.git = {
@@ -54,6 +88,8 @@
 
         # nix
         jnoortheen.nix-ide
+        mkhl.direnv
+        arrterian.nix-env-selector
 
         # java
         vscjava.vscode-java-pack
