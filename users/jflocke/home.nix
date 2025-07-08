@@ -36,7 +36,7 @@
     boxbuddy
     obsidian
     logseq
-    notion-app
+    # notion-app
     appflowy
     obs-studio
     davinci-resolve

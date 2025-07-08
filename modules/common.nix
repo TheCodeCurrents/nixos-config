@@ -75,6 +75,9 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
+  # enable flatpack
+  services.flatpak.enable = true;
+
   # Install firefox.
   programs.firefox.enable = true;
 
