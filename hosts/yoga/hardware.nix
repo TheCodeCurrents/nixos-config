@@ -21,7 +21,7 @@
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/68CC-04B7";
       fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
+      options = [ "fmask=0077" "dmask=0077" "nofail" "x-systemd.automount" "x-systemd.device-timeout=10s" ];
     };
 
   swapDevices =
