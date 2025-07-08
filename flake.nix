@@ -19,7 +19,6 @@
 
   outputs = { self, nixpkgs, home-manager, nix-vscode-extensions, ... }@inputs: 
     let 
-      system = "x86_64-linux";
       mkHost = hostName: import ./hosts/${hostName}/${hostName}.nix;
     in {
     # Overlays
@@ -29,7 +28,7 @@
 
     # Please replace my-nixos with your hostname
     nixosConfigurations.ideapad = nixpkgs.lib.nixosSystem {
-      system = system;
+      system = "x86_64-linux";
       modules = [
         # Import the previous configuration.nix we used,
         # so the old configuration file still takes effect
@@ -48,7 +47,7 @@
       ];
     };
     nixosConfigurations.yoga = nixpkgs.lib.nixosSystem {
-      system = system;
+      system = "x86_64-linux";
       modules = [
         # Import the previous configuration.nix we used,
         # so the old configuration file still takes effect
