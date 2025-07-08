@@ -27,6 +27,9 @@
   swapDevices =
     [ { device = "/dev/disk/by-uuid/672dcc46-79f8-4407-9d19-110699bad5ca"; }
     ];
+  
+  system.build.installBootLoader = "${pkgs.coreutils}/bin/true";
+
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
