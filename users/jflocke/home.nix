@@ -10,6 +10,12 @@
   home.username = "jflocke";
   home.homeDirectory = "/home/jflocke";
 
+  # In your Home Manager configuration (home.nix)
+  home.sessionVariables = {
+    XDG_DATA_DIRS = "${config.home.profileDirectory}/share:/var/lib/flatpak/exports/share:${config.home.homeDirectory}/.local/share/flatpak/exports/share";
+  };
+
+
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
     # utility
