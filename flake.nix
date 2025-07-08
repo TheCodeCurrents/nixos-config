@@ -20,7 +20,7 @@
   outputs = { self, nixpkgs, home-manager, nix-vscode-extensions, ... }@inputs: 
     let 
       system = "x86_64-linux";
-      mkHost = hostName: import ./hosts/${hostName}.nix
+      mkHost = hostName: import ./hosts/${hostName}/${hostName}.nix;
     in {
     # Overlays
     nixpkgs.overlays = [
@@ -34,7 +34,7 @@
         # Import the previous configuration.nix we used,
         # so the old configuration file still takes effect
         ./modules/common.nix
-        (mkHost "desktop")
+        (mkHost "ideapad")
 
         home-manager.nixosModules.home-manager
         {
@@ -53,7 +53,7 @@
         # Import the previous configuration.nix we used,
         # so the old configuration file still takes effect
         ./modules/common.nix
-        (mkHost "desktop")
+        (mkHost "yoga")
 
         home-manager.nixosModules.home-manager
         {
