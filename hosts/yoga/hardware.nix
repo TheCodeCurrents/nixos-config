@@ -12,6 +12,8 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
+  boot.loader.efi.efiSysMountPoint = "/boot";
+
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/b5844e7f-1e6f-4e4d-9358-ac2f4017cf6b";
@@ -21,7 +23,7 @@
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/68CC-04B7";
       fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" "nofail" "x-systemd.automount" "x-systemd.device-timeout=10s" ];
+      options = [ "fmask=0077" "dmask=0077" "nofail" "x-systemd.automount" "x-systemd.device-timeout=10s" "noauto" ];
     };
 
   swapDevices =
