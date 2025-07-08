@@ -34,6 +34,7 @@
         # Import the previous configuration.nix we used,
         # so the old configuration file still takes effect
         ./modules/common.nix
+        (mkHost "desktop")
 
         home-manager.nixosModules.home-manager
         {
@@ -52,6 +53,7 @@
         # Import the previous configuration.nix we used,
         # so the old configuration file still takes effect
         ./modules/common.nix
+        (mkHost "desktop")
 
         home-manager.nixosModules.home-manager
         {
