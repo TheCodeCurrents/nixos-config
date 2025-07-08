@@ -17,7 +17,11 @@
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-vscode-extensions, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, nix-vscode-extensions, ... }@inputs: 
+    let 
+      system = "x86_64-linux";
+      mkHost = hostName: import ./hosts/${hostName}.nix
+    in {
     # Overlays
     nixpkgs.overlays = [
       nix-vscode-extensions.overlays.default
@@ -25,7 +29,25 @@
 
     # Please replace my-nixos with your hostname
     nixosConfigurations.ideapad = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
+      system = system;
+      modules = [
+        # Import the previous configuration.nix we used,
+        # so the old configuration file still takes effect
+        ./modules/common.nix
+
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+
+          home-manager.users.jflocke = import ./users/jflocke/home.nix;
+        }
+
+        { _module.args = { inherit inputs; };}
+      ];
+    };
+    nixosConfigurations.yoga = nixpkgs.lib.nixosSystem {
+      system = system;
       modules = [
         # Import the previous configuration.nix we used,
         # so the old configuration file still takes effect
